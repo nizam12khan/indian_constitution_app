@@ -3,4 +3,5 @@ class Article < ApplicationRecord
   validates :content, presence: true
 
   belongs_to :part
+  has_many :comments, as: :commentable, dependent: :destroy
 end
