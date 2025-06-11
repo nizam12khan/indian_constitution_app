@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/nizam12khan/indian_constitution.git
-  revision: c895557178ef43552a399a26edb6a5f4d4cb9110
+  revision: 0d886b847251f496ac0f5abbc8894d8bbb40b405
   specs:
     indian_constitution (0.1.0)
 

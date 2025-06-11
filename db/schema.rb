@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_10_200317) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_11_105514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.integer "number", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "part_id", null: false
+    t.string "title"
+    t.index ["number"], name: "index_articles_on_number", unique: true
+    t.index ["part_id"], name: "index_articles_on_part_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+  end
 
   create_table "parts", force: :cascade do |t|
     t.integer "number", null: false
@@ -21,4 +41,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_10_200317) do
     t.datetime "updated_at", null: false
     t.index ["number"], name: "index_parts_on_number", unique: true
   end
+
+  add_foreign_key "articles", "parts"
 end
