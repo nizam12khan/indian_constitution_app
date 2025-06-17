@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Indian Constitution App" %></title>
+    <title>Indian Constitution</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-gray-100 font-sans min-h-screen">
+    <header class="header">
+      <div class="container flex flex-col sm:flex-row justify-between items-center">
+        <h1 class="text-2xl font-bold mb-2 sm:mb-0">Indian Constitution</h1>
+        <div>
+          <%= form_with url: search_path, method: :get, data: { turbo_frame: "search_results" }, class: "flex" do %>
+            <%= text_field_tag :query, nil, placeholder: "Search article number or keyword", class: "p-2 rounded-l text-black w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-300" %>
+            <%= submit_tag "Search", class: "bg-blue-800 text-white p-2 rounded-r hover:bg-blue-900 transition" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+    <main class="container">
       <%= yield %>
+      <turbo-frame id="search_results" class="mt-4"></turbo-frame>
     </main>
   </body>
 </html>

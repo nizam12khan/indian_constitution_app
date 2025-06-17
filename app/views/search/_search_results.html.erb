@@ -1,0 +1,10 @@
+<h2 class="text-2xl font-bold mb-4 text-gray-800">Search Results</h2>
+<% if articles.any? %>
+  <ul class="space-y-2">
+    <% articles.each do |article| %>
+      <li><%= link_to "Article #{article.number}: #{article.title}", article_path(article), class: "text-blue-600 hover:underline hover:text-blue-800 transition" %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-gray-600">No results found.</p>
+<% end %>
