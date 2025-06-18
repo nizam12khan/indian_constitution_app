@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: indian_constitution_app_development
@@ -81,9 +80,9 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: indian_constitution_app_production
-    username: indian_constitution_app
-    password: <%= ENV["INDIAN_CONSTITUTION_APP_DATABASE_PASSWORD"] %>
+    database: <%= ENV['PGDATABASE'] || 'indian_constitution_app_production' %>
+    username: <%= ENV['PGUSER'] || 'indian_constitution_app' %>
+    password: <%= Rails.application.credentials.indian_constitution_app_database_password %>
     host: <%= ENV['PGHOST'] || 'localhost' %>
     port: <%= ENV['PGPORT'] || 5432 %>
   cache:
