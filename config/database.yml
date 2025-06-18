@@ -80,6 +80,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
+     url: <%= ENV['DATABASE_URL'] %>
     database: <%= ENV['PGDATABASE'] || 'indian_constitution_app_production' %>
     username: <%= ENV['PGUSER'] || 'indian_constitution_app' %>
     password: <%= Rails.application.credentials.indian_constitution_app_database_password %>
