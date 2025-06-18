@@ -84,6 +84,8 @@ production:
     database: indian_constitution_app_production
     username: indian_constitution_app
     password: <%= ENV["INDIAN_CONSTITUTION_APP_DATABASE_PASSWORD"] %>
+    host: <%= ENV['PGHOST'] || 'localhost' %>
+    port: <%= ENV['PGPORT'] || 5432 %>
   cache:
     <<: *primary_production
     database: indian_constitution_app_production_cache
