@@ -6,6 +6,8 @@ This is a Ruby on Rails web application built using the [`indian-constitution-ge
 
 The app provides an intuitive interface to browse through the different **Parts**, **Schedules**, and **Articles** of the Indian Constitution. It is ideal for students, researchers, and anyone curious about Indian legal and civic knowledge.
 
+📖 Read the full backstory, vision, and motivation behind this project on Substack: [Why I’m Building a Modern Indian Constitution App](https://nakhmazin12.substack.com/p/why-im-building-a-modern-indian-constitution)
+
 ---
 
 ## ✨ Features
